@@ -4,9 +4,15 @@ import { CSSTransition } from 'react-transition-group';
 import fadeFilterStyles from '../../animationStyles/Filter.module.css';
 import StylesInput from '../contactForm/ContactForm.module.css';
 
-export const Filter = ({ filter, handleFilterChange, showFilter }) => (
+export const Filter = ({
+  contacts,
+  filter,
+  handleFilterChange,
+  showFilter,
+}) => (
   <CSSTransition
-    in={showFilter}
+    in={showFilter || contacts.length > 1}
+    appear={showFilter}
     timeout={500}
     classNames={fadeFilterStyles}
     unmountOnExit

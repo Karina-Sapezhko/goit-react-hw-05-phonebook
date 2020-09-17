@@ -22,6 +22,9 @@ class App extends Component {
     const parsedContacts = JSON.parse(contacts);
     if (parsedContacts) {
       this.setState({ contacts: parsedContacts });
+      if (parsedContacts.length > 1) {
+        this.setState({ showFilter: true });
+      }
     }
   }
   componentDidUpdate(prevProps, prevState) {
@@ -29,9 +32,12 @@ class App extends Component {
     if (contacts !== prevState.contacts) {
       localStorage.setItem('contacts', JSON.stringify(contacts));
     }
+    if (contacts.length > 1) {
+      return;
+    }
   }
 
-  formSubmitHandler = (data, bool) => {
+  formSubmitHandler = data => {
     const { contacts } = this.state;
     const findName = contacts.find(contact => contact.name === data.name);
 
@@ -48,8 +54,6 @@ class App extends Component {
     } else {
       this.setState(prev => ({
         contacts: [data, ...prev.contacts],
-        showFilter: bool,
-        showError: false,
       }));
     }
   };
@@ -73,7 +77,7 @@ class App extends Component {
   };
 
   render() {
-    const { filter, showFilter, showError } = this.state;
+    const { filter, showFilter, showError, contacts } = this.state;
 
     return (
       <Layout>
@@ -89,12 +93,14 @@ class App extends Component {
         <div className={styles.box}>
           <ContactForm submit={this.formSubmitHandler} />
           <h2 className={styles.boxTitle}>Contacts</h2>
-
+          {/* {contacts.length > 1 && ( */}
           <Filter
             filter={filter}
             handleFilterChange={this.handleFilterChange}
             showFilter={showFilter}
+            contacts={contacts}
           />
+          {/* )} */}
 
           <CSSTransition
             in={true}

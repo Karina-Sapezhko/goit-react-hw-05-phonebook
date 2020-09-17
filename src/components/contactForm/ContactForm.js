@@ -20,9 +20,8 @@ export class ContactForm extends Component {
       name: name,
       number: number,
     };
-    name === '' && number === ''
-      ? alert('Please enter data.')
-      : this.props.submit(contact, true);
+
+    this.props.submit(contact);
 
     this.reset();
   };
