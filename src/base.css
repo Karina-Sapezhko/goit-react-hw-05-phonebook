@@ -1,0 +1,22 @@
+body {
+  font-family: 'Roboto', sans-serif !important;
+  color: #313131;
+  font-weight: 400;
+  background-color: #fff0f5;
+}
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+header {
+  position: relative;
+  margin-bottom: 5px;
+  display: flex;
+  background-color: rgb(232, 240, 254);
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}

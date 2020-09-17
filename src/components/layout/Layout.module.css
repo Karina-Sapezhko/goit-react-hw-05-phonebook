@@ -1,0 +1,14 @@
+.titleLogo {
+  color: #5264ae;
+  font-size: 34px;
+  line-height: 1.1;
+  font-weight: 700;
+  margin: 0;
+}
+
+.boxLogo {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  margin-right: 500px;
+}
